@@ -13,11 +13,16 @@ var express = require("express"),
     User = require("./models/user"),
     seedDB = require("./seeds");
 
+    require('dotenv/config');
+
+    //requiring routes
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");
 
-mongoose.connect("mongodb+srv://derick:church@yelpcamp-r8fca.mongodb.net/yelp_camp?retryWrites=true")    
+console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect("mongodb+srv://derick:church@yelpcamp-r8fca.mongodb.net/yelp_camp?retryWrites=true", { useNewUrlParser: true })    
 //mongoose.connect("mongodb://localhost:27017/yelp_camp_v12", { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
