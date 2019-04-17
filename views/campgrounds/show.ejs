@@ -17,7 +17,7 @@
                     <h4 class="pull-right">$ <%= showCampground.price; %>/night</h4>
                     <h4><a href=""><%= showCampground.name; %></a></h4>
                     <p><%= showCampground.description; %></p>
-                    <p><em>Created by <%= showCampground.author.username; %>,  <%= moment(showCampground.createdAt).fromNow() %></em></p> 
+                    <p><em>Created by <a href="/users/<%= showCampground.author.id %>"><%= showCampground.author.username; %></a>,  <%= moment(showCampground.createdAt).fromNow() %></em></p> 
                     <% if(currentUser && showCampground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                         <a class="btn btn-warning" href="/campgrounds/<%= showCampground._id %>/edit">Edit</a>
                         <form id="delete-form" action="/campgrounds/<%= showCampground._id %>?_method=DELETE" method="POST">
